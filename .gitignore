@@ -1,0 +1,39 @@
+# Database connection files
+.env
+.env.local
+.env.*.local
+
+# PostgreSQL
+*.sql~
+*.backup
+*.dump
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Sensitive data
+credentials.json
+secrets/
+*.key
+*.pem
+*.crt
+
+# OS files
+Thumbs.db
+.Thumbs.db
+desktop.ini

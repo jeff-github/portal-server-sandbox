@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/mclew/dev24/ctest/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
