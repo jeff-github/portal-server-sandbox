@@ -1,8 +1,45 @@
 -- =====================================================
 -- Clinical Trial Diary Database Schema
 -- Target: Supabase (PostgreSQL 15+)
--- Compliance: FDA 21 CFR Part 11
+-- Compliance: FDA 21 CFR Part 11, HIPAA, GDPR
 -- Version: 1.0
+-- =====================================================
+--
+-- DATA PRIVACY ARCHITECTURE:
+-- This database implements privacy-by-design with de-identified clinical data.
+-- Patient identity is managed separately by Supabase Auth.
+-- No PHI (Protected Health Information) or PII (Personally Identifiable Information)
+-- is stored in this database.
+--
+-- ENCRYPTION STRATEGY:
+-- - At Rest: AES-256 encryption (Supabase default, entire database)
+-- - In Transit: TLS 1.3/1.2 (all connections)
+-- - Field-Level: NOT REQUIRED (data is de-identified, see DATA_CLASSIFICATION.md)
+-- - Key Management: Automatic rotation via Supabase infrastructure
+--
+-- DATA CLASSIFICATION:
+-- - Patient IDs: De-identified study participant IDs (not real names)
+-- - Diary Data: Clinical observations (no identifying information)
+-- - Site Info: Business contact information (not personal health data)
+-- - Audit Trail: Complete change history for compliance
+--
+-- SENSITIVE FIELDS (Business Information Only):
+-- - sites.contact_info: Business contact information for clinical sites
+-- - sites.address: Business addresses for clinical sites
+-- - user_profiles.email: Professional email addresses
+--
+-- NO PHI/PII STORED:
+-- This database does NOT contain:
+-- ❌ Patient real names
+-- ❌ Social Security Numbers
+-- ❌ Dates of birth
+-- ❌ Medical record numbers
+-- ❌ Home addresses or personal contact information
+-- ❌ Re-identification keys
+--
+-- See spec/DATA_CLASSIFICATION.md for complete privacy architecture
+-- See spec/SECURITY.md for security controls and compliance details
+--
 -- =====================================================
 
 -- Enable required extensions
